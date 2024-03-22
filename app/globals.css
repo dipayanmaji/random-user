@@ -2,32 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer base {
+  body {
+    @apply bg-black text-white grid place-items-center h-screen w-full;
   }
-}
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  .button {
+    @apply text-[28px] overflow-hidden relative h-[28px] w-[28px];
+  }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .button span {
+    @apply absolute top-0 left-0 duration-300;
+  }
+
+  .button span svg:first-child {
+    @apply text-slate-600;
+  }
+
+  .button span svg:nth-child(2) {
+    @apply text-green-600;
+  }
+
+  .button.active span {
+    @apply -translate-y-[28px];
   }
 }
